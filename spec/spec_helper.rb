@@ -1,2 +1,3 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "haskii"
+require "require_all"
+
+require_all "lib"
