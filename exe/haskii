@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+require "thor"
+require "require_all"
+
+require_all "lib"
+
+Haskii::CLI.start(ARGV)
