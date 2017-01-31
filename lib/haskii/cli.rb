@@ -7,7 +7,13 @@ module Haskii
     desc "bar", "will print out an ascii bar of your choosing"
     def bar(*frequences)
       frequences.map! { |i| i.to_i }
-      Haskii::BarChart.new(frequences).draw_chart_if_needed
+      if frequences.empty?
+        puts "Nothing to see here, please spare some numbers. Tnx"
+      else
+        result = Haskii::BarChart.new(frequences).rotate
+        puts "Your happy bar chart:\n\n"
+        puts result
+      end
     end
 
     desc "version", "Prints the haskii version info"

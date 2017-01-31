@@ -3,7 +3,7 @@ require "spec_helper"
 describe Haskii::CLI do
 
   it "prints a chart" do
-    expect { subject.bar("2", "1") }.to output(/^Your happy bar chart:$/).to_stdout
+    expect { subject.bar("2", "1") }.to output(/^Your happy bar chart:\n((\*)*\n)*$/).to_stdout
   end
 
   it "asks for number when called without arguments" do
