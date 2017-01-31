@@ -1,13 +1,13 @@
+require "matrix"
+
 module Haskii
   class BarChart
-    attr_accessor :length, :mode, :lines
+    attr_accessor :length, :mode
 
     def initialize(frequences)
       @frequences = frequences
       @length = @frequences.length
       @mode = @frequences.max
-
-      @lines = []
     end
 
     def draw_chart_if_needed
@@ -15,29 +15,26 @@ module Haskii
     end
 
     def rotate
-      generate_lines
-      @novi = []
-
-      for x in (0..mode - 1 ) do
-        new_line = ""
-        for j in (0..length - 1) do
-          new_line = new_line + lines[j][x]
-        end
-        @novi << new_line
-      end
+      matrix = generate_matrix.column_vectors
+      .reverse
+      .map { |vector| vector.to_a }
+      .map { |line| line.join("") }
 
       puts "Your happy bar chart:"
-      puts @novi.reverse
+      puts matrix
     end
 
     def input_is_empty
       puts "Nothing to see here, please spare some numbers. Tnx"
     end
 
-    def generate_lines
-      @frequences.each do |number|
-        @lines << "*" * number + " " * @mode
-      end
+    def generate_matrix
+      row_sequence = @frequences.map { |number| generate_row(number) }
+      Matrix[*row_sequence]
+    end
+
+    def generate_row(number)
+      Array.new(number,"*") + Array.new(@mode - number, " ")
     end
 
   end
