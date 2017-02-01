@@ -16,6 +16,8 @@ module Haskii
       .map { |line| line.join("") }
     end
 
+    private
+
     def generate_matrix
       row_sequence = @frequences.map { |number| generate_row(number) }
       Matrix[*row_sequence]
