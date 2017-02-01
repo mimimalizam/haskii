@@ -9,14 +9,18 @@ module Haskii
       @mode = @frequences.max
     end
 
+    def show_chart
+      rotate
+    end
+
+    private
+
     def rotate
       matrix = generate_matrix.column_vectors
       .reverse
       .map { |vector| vector.to_a }
       .map { |line| line.join("") }
     end
-
-    private
 
     def generate_matrix
       row_sequence = @frequences.map { |number| generate_row(number) }

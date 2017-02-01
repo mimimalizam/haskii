@@ -10,7 +10,7 @@ module Haskii
       if frequences.empty?
         puts "Nothing to see here, please spare some numbers. Tnx"
       else
-        result = Haskii::BarChart.new(frequences).rotate
+        result = Haskii::BarChart.new(frequences).show_chart
         puts "Your happy bar chart:\n\n"
         puts result
       end
