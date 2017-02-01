@@ -6,13 +6,14 @@ module Haskii
 
     desc "bar", "will print out an ascii bar of your choosing"
     def bar(*frequences)
-      frequences.map! { |i| i.to_i }
-      if frequences.empty?
-        puts "Nothing to see here, please spare some numbers. Tnx"
-      else
-        result = Haskii::BarChart.new(frequences).show_chart
+      @frequences = frequences
+
+      if it_can_be_charted?
+        result = Haskii::BarChart.new(@frequences).show_chart
         puts "Your happy bar chart:\n\n"
         puts result
+      else
+        puts "Nothing to see here, please spare some numbers without letters. Tnx"
       end
     end
 
@@ -22,6 +23,15 @@ module Haskii
     end
     map %w(-v --version) => :version
 
+    private
+
+    def convert_to_integer
+       @frequences.map! { |i| i.to_i }
+    end
+
+    def it_can_be_charted?
+      ( not @frequences.empty? ) && (convert_to_integer.min > 0)
+    end
   end
 
 end
