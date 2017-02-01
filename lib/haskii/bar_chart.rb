@@ -2,11 +2,10 @@ require "matrix"
 
 module Haskii
   class BarChart
-    attr_accessor :length, :mode
 
     def initialize(frequences)
       @frequences = frequences
-      @length = @frequences.length
+
       @mode = @frequences.max
     end
 
