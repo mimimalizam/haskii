@@ -9,7 +9,7 @@ module Haskii
       @frequences = frequences
 
       if it_can_be_charted?
-        result = Haskii::BarChart.new(@frequences).show_chart
+        result = Haskii::BarChart.new(@frequences).render
         puts "Your happy bar chart:\n\n"
         puts result
       else

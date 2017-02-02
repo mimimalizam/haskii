@@ -10,7 +10,7 @@ describe Haskii::CLI do
     let(:message) { /^Nothing to see here, please spare some numbers without letters. Tnx$/ }
 
     it "asks for numbers when called without arguments" do
-      expect { subject.bar() }.to output(message).to_stdout
+      expect { subject.bar }.to output(message).to_stdout
     end
 
     it "asks for numbers when called with letters" do

@@ -5,30 +5,27 @@ module Haskii
 
     def initialize(frequences)
       @frequences = frequences
+      @max = @frequences.max
 
-      @mode = @frequences.max
+      @matrix = generate_matrix
     end
 
-    def show_chart
-      rotate
+    def render
+      @matrix.map { |line| line.join("") }
     end
 
     private
 
-    def rotate
-      matrix = generate_matrix.column_vectors
-      .reverse
-      .map { |vector| vector.to_a }
-      .map { |line| line.join("") }
-    end
-
     def generate_matrix
-      row_sequence = @frequences.map { |number| generate_row(number) }
-      Matrix[*row_sequence]
+      rows = @frequences.map { |number| generate_row(number) }
+
+      Matrix[*rows].column_vectors
+        .reverse
+        .map { |vector| vector.to_a }
     end
 
     def generate_row(number)
-      Array.new(number,"*") + Array.new(@mode - number, " ")
+      Array.new(number,"*") + Array.new(@max - number, " ")
     end
 
   end
