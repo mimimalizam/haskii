@@ -14,12 +14,23 @@ describe Haskii::MimiMatrix do
       [1, 1, 1]
     ] }
 
-    it "should return a rotated matrix"
-    #do
-    #  expect(Haskii::Matrix.rotate(matrica)).to eql(good_one)
-    #end
+    it "should return a rotated matrix" do
+      expect(described_class.rotate(matrica)).to match_array(good_one)
+    end
   end
 
-  it "should return an array or arrays"
+  describe "#generate_matrix" do
+    let(:numbers) { [2, 4, 6] }
+
+    let(:good_one) { [
+      ["*", "*", " ", " ", " ", " "],
+      ["*", "*", "*", "*", " ", " "],
+      ["*", "*", "*", "*", "*", "*"]
+    ] }
+
+    it "returns an array" do
+      expect(described_class.new(numbers).generate_matrix).to match_array(good_one)
+    end
+  end
 
 end
