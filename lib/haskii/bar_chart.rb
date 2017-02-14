@@ -1,20 +1,24 @@
-require "matrix"
-
 module Haskii
   class BarChart
 
     def initialize(frequences)
-      @matrix = Haskii::MimiMatrix.new(frequences)
-                                  .generate_matrix
+      @frequences = frequences
+
+      @matrix = create_matrix
     end
 
     def render
-      generate_matrix.map { |line| line.join("") }
+      rotate_matrix.map { |line| line.join("") }
     end
 
     private
 
-    def generate_matrix
+    def create_matrix
+      Haskii::MimiMatrix.new(@frequences)
+      .generate_matrix
+    end
+
+    def rotate_matrix
       Haskii::MimiMatrix.rotate(@matrix)
     end
 
