@@ -5,11 +5,28 @@ module Haskii
   class CLI < Thor
 
     desc "bar", "will print out an ascii bar of your choosing"
+    long_desc <<-LONGDESC
+      Prints a simple bar chart for given number sequence.
+
+      With --emoji option, haskii bar will print deluxe bar chart edition
+      🌈 🌈 🌈 🌈 🎉 🎉 🎉 🍀 🍀 🍀  when an emoji is suggested.
+      Sorry, I understand how 💀 💀 💀 💀  boring searching for emojis can be
+
+       > $ haskii bar --emoji 🍒  5 3 1
+       \x5> Your happy bar chart:
+       \x5>
+       \x5>🍒
+       \x5>🍒
+       \x5>🍒🍒
+       \x5>🍒🍒
+       \x5>🍒🍒🍒
+    LONGDESC
+    option :emoji, :default => "*"
     def bar(*frequences)
       @frequences = frequences
 
       if it_can_be_charted?
-        result = Haskii::BarChart.new(@frequences).render
+        result = Haskii::BarChart.new(@frequences, options[:emoji]).render
         puts "Your happy bar chart:\n\n"
         puts result
       else
