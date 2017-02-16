@@ -4,18 +4,11 @@ module Haskii
   class BarChart
 
     def initialize(frequences)
-      @frequences = frequences
+      @matrix = Haskii::MimiMatrix.new(frequences).create
     end
 
     def render
-      create_matrix.map { |line| line.join("") }
-    end
-
-    private
-
-    def create_matrix
-      Haskii::MimiMatrix.new(@frequences)
-      .create
+      @matrix.map { |line| line.join("") }
     end
 
   end
