@@ -34,7 +34,17 @@ Your happy bar chart:
  *****  ****
 ******* *****
 **************
+
+$haskii bar --emoji 🍀  1 1 2 3 5 2
+Your happy bar chart:
+
+    🍀
+    🍀
+   🍀🍀
+  🍀🍀🍀🍀
+🍀🍀🍀🍀🍀🍀
 ```
+
 
 ## Development
 
