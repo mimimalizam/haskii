@@ -3,17 +3,16 @@ module Haskii
 
     def initialize(numbers)
       @numbers = numbers
-      @length = numbers.length
 
-      average
+      @average_length = numbers.length - 1
     end
 
     def average
       tmp = @numbers.rotate
 
       [@numbers, tmp].transpose
-      .map{|a| a.inject(:+) / 2.0}
-      .map { |x| x.round }.first @length - 1
+      .map { |a| a.inject(:+) / 2 }
+      .first @average_length
     end
   end
 end
