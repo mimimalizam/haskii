@@ -5,8 +5,8 @@ module Haskii
       @matrix = matrix
     end
 
-    def create
-      html_file = File.new("chart.html", "w+")
+    def create(file_name)
+      html_file = File.new(file_name, "w+")
       html_file.puts table
       html_file.close
     end
