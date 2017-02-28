@@ -15,7 +15,7 @@ module Haskii
     def create
       html_file = File.new("chart.html", "w+")
       html_file.puts table
-      html_file.close()
+      html_file.close
     end
 
     private
