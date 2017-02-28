@@ -20,15 +20,24 @@ module Haskii
        \x5>🍒🍒
        \x5>🍒🍒
        \x5>🍒🍒🍒
+
+       If you specify --output option, haskii bar will save surprise chart in
+       a html file
+
+       > $ haskii bar --emoji 🍒 --output chart.html 2 4 6 8 6 4 2 1 6 5 4 3 2 1
+       \x5> Your happy bar chart is in "chart.html".
+       \x5> Terminal still rules :P #igor
     LONGDESC
+
+    option :output
     option :emoji, :default => "*"
     def bar(*frequences)
       @frequences = frequences
+      @output_file = options[:output]
+      @emoji = options[:emoji]
 
       if it_can_be_charted?
-        result = Haskii::BarChart.new(@frequences, options[:emoji]).render
-        puts "Your happy bar chart:\n\n"
-        puts result
+        @output_file ? create_html : render_chart
       else
         puts "Nothing to see here, please spare some numbers without letters. Tnx"
       end
@@ -49,6 +58,18 @@ module Haskii
     def it_can_be_charted?
       ( not @frequences.empty? ) && (convert_to_integer.min > 0)
     end
-  end
 
+    def create_html
+      Haskii::BarChart.new(@frequences, @emoji)
+                      .create_html(@output_file)
+      puts "Your happy bar chart is in \"#{@output_file}\"\nTerminal still rules :P #igor"
+    end
+
+    def render_chart
+      result = Haskii::BarChart.new(@frequences, @emoji).render
+      puts "Your happy bar chart:\n\n"
+      puts result
+    end
+
+  end
 end

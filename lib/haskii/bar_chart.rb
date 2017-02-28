@@ -9,8 +9,8 @@ module Haskii
       @matrix.map { |line| line.join("") }
     end
 
-    def create_html
-      Haskii::HtmlChart.new(@matrix).create
+    def create_html(file_name)
+      Haskii::HtmlChart.new(@matrix).create(file_name)
     end
   end
 end
