@@ -14,18 +14,18 @@ module Haskii
     private
 
     def table
-      cells = @matrix.map { |row| add_tag(to_cells(row),'tr') }
+      cells = @matrix.map { |row| add_tag('tr', transform_to_cells(row)) }
       .join
 
-      add_tag(cells,'table')
+      add_tag('table', cells)
     end
 
-    def to_cells(sequence)
-      sequence.map { |node| add_tag(node, 'td') }
+    def transform_to_cells(row)
+      row.map { |node| add_tag('td', node) }
       .join
     end
 
-    def add_tag(string, tag)
+    def add_tag(tag, string)
       "<#{tag}>#{string}</#{tag}>"
     end
 
