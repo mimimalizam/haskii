@@ -60,7 +60,7 @@ module Haskii
     end
 
     def create_html
-      Haskii::BarChart.new(@frequences, @emoji)
+      Haskii::HtmlChart.new(@frequences, @emoji)
                       .create_html(@output_file)
       puts "Your happy bar chart is in \"#{@output_file}\"\nTerminal still rules :P #igor"
     end

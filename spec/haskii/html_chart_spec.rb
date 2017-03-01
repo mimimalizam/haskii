@@ -3,10 +3,8 @@ require "spec_helper"
 describe Haskii::HtmlChart do
 
   describe "#create" do
-    let(:matrix) { [[" ", " ", "*"],
-                    [" ", " ", "*"],
-                    [" ", "*", "*"],
-                    ["*", "*", "*"]] }
+    let(:emoji) { "*" }
+    let(:frequences) { [1, 2, 4] }
 
     let(:html_string) { "<table><tr><td> </td><td> </td><td>*</td></tr><tr><td> </td><td> </td><td>*</td></tr><tr><td> </td><td>*</td><td>*</td></tr><tr><td>*</td><td>*</td><td>*</td></tr></table>" }
 
@@ -21,7 +19,7 @@ describe Haskii::HtmlChart do
       expect(@html_double).to receive(:puts).with(html_string)
       expect(@html_double).to receive(:close)
 
-      described_class.new(matrix).create(output_file)
+      described_class.new(frequences, emoji).create_html(output_file)
     end
   end
 

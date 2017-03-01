@@ -1,11 +1,7 @@
 module Haskii
-  class HtmlChart
+  class HtmlChart < BarChart
 
-    def initialize(matrix)
-      @matrix = matrix
-    end
-
-    def create(file_name)
+    def create_html(file_name)
       html_file = File.new(file_name, "w+")
       html_file.puts table
       html_file.close
