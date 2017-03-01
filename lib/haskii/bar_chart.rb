@@ -12,5 +12,6 @@ module Haskii
     def create_html(file_name)
       Haskii::HtmlChart.new(@matrix).create(file_name)
     end
+
   end
 end

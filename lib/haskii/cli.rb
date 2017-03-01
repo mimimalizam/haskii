@@ -36,11 +36,7 @@ module Haskii
       @output_file = options[:output]
       @emoji = options[:emoji]
 
-      if it_can_be_charted?
-        @output_file ? create_html : render_chart
-      else
-        puts "Nothing to see here, please spare some numbers without letters. Tnx"
-      end
+      it_can_be_charted ? create_output : ask_for_numbers
     end
 
     desc "version", "Prints the haskii version info"
@@ -51,12 +47,16 @@ module Haskii
 
     private
 
-    def convert_to_integer
-       @frequences.map! { |i| i.to_i }
+    def it_can_be_charted
+      ( not @frequences.empty? ) && (convert_to_integer.min > 0)
     end
 
-    def it_can_be_charted?
-      ( not @frequences.empty? ) && (convert_to_integer.min > 0)
+    def create_output
+      @output_file ? create_html : render_chart
+    end
+
+    def ask_for_numbers
+      puts "Nothing to see here, please spare some numbers without letters. Tnx"
     end
 
     def create_html
@@ -69,6 +69,10 @@ module Haskii
       result = Haskii::BarChart.new(@frequences, @emoji).render
       puts "Your happy bar chart:\n\n"
       puts result
+    end
+
+    def convert_to_integer
+       @frequences.map! { |i| i.to_i }
     end
 
   end
