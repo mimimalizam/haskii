@@ -52,27 +52,34 @@ module Haskii
     end
 
     def create_output
-      @output_file ? create_html : render_chart
+      @output_file ? render_html : render_chart
     end
 
     def ask_for_numbers
       puts "Nothing to see here, please spare some numbers without letters. Tnx"
     end
 
-    def create_html
-      Haskii::HtmlChart.new(@frequences, @emoji)
-                      .create_html(@output_file)
-      puts "Your happy bar chart is in \"#{@output_file}\"\nTerminal still rules :P #igor"
+    def render_html
+      result = Haskii::HtmlChart.new(@frequences, @emoji)
+                       .render
+      create_html(result)
     end
 
     def render_chart
-      result = Haskii::BarChart.new(@frequences, @emoji).render
+      result = Haskii::TerminalChart.new(@frequences, @emoji).render
       puts "Your happy bar chart:\n\n"
       puts result
     end
 
     def convert_to_integer
-       @frequences.map! { |i| i.to_i }
+      @frequences.map! { |i| i.to_i }
+    end
+
+    def create_html(result)
+      html_file = File.new(@output_file, "w+")
+      html_file.puts result
+      html_file.close
+      puts "Your happy bar chart is in \"#{@output_file}\"\nTerminal still rules :P #igor"
     end
 
   end
