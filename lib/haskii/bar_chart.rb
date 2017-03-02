@@ -6,7 +6,6 @@ module Haskii
     end
 
     def render
-      @matrix.map { |line| line.join("") }
     end
 
   end
