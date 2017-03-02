@@ -1,20 +1,14 @@
 module Haskii
   class HtmlChart < BarChart
 
-    def create_html(file_name)
-      html_file = File.new(file_name, "w+")
-      html_file.puts table
-      html_file.close
-    end
-
-    private
-
-    def table
+    def render
       cells = @matrix.map { |row| add_tag('tr', transform_to_cells(row)) }
       .join
 
       add_tag('table', cells)
     end
+
+    private
 
     def transform_to_cells(row)
       row.map { |node| add_tag('td', node) }
