@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["milana.stojadinov@gmail.com"]
 
   spec.summary       = %q{ Playing with ascii }
-  spec.description   = %q{ This gem should draw bar chart in the terminal with ASCII art }
+  spec.description   = %q{ This gem draws bar charts, in some cases out of emojies }
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
