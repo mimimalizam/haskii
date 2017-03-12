@@ -52,20 +52,19 @@ module Haskii
     end
 
     def create_output
-      @output_file ? render_html : render_chart
+      @output_file ? render_html_chart : render_terminal_chart
     end
 
     def ask_for_numbers
       puts "Nothing to see here, please spare some numbers without letters. Tnx"
     end
 
-    def render_html
-      result = Haskii::HtmlChart.new(@frequences, @emoji)
-                       .render
+    def render_html_chart
+      result = Haskii::HtmlChart.new(@frequences, @emoji).render
       create_html(result)
     end
 
-    def render_chart
+    def render_terminal_chart
       result = Haskii::TerminalChart.new(@frequences, @emoji).render
       puts "Your happy bar chart:\n\n"
       puts result
