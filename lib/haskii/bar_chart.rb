@@ -6,6 +6,7 @@ module Haskii
     end
 
     def render
+      raise NotImplementedError, "render method is not implemented"
     end
 
   end
