@@ -6,7 +6,7 @@ module Haskii
     end
 
     def render
-      @matrix.map { |line| line.join("") }
+      raise NotImplementedError, "render method is not implemented"
     end
 
   end
