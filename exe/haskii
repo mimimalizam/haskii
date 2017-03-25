@@ -4,6 +4,6 @@
 require "thor"
 require "require_all"
 
-require_all "lib"
+require_rel "lib"
 
 Haskii::CLI.start(ARGV)
