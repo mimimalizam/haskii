@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["milana.stojadinov@gmail.com"]
 
   spec.summary       = %q{ Playing with ascii }
-  spec.description   = %q{ This gem draws bar charts, in some cases out of emojies }
-  spec.homepage      = "https://rubygems.org/gems/haskii"
+  spec.description   = %q{ This CLI gem draws bar charts, in some cases out of emojis }
+  spec.homepage      = "https://github.com/mimimalizam/haskii"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
