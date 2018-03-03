@@ -2,7 +2,7 @@ module Haskii
   class HtmlChart < BarChart
 
     def render
-      cells = @matrix.map { |row| add_tag('tr', transform_to_cells(row)) }
+      cells = matrix.map { |row| add_tag('tr', transform_to_cells(row)) }
       .join
 
       add_tag('table', cells)

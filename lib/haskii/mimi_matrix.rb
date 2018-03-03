@@ -1,6 +1,5 @@
 module Haskii
   class MimiMatrix
-
     def initialize(numbers, emoji)
       @emoji = emoji
       @numbers = numbers
