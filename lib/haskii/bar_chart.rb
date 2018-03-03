@@ -1,5 +1,6 @@
 module Haskii
   class BarChart
+    attr_reader :matrix
 
     def initialize(frequences, emoji)
       @matrix = Haskii::MimiMatrix.new(frequences, emoji).create

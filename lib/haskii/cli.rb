@@ -3,6 +3,7 @@ require "thor"
 module Haskii
 
   class CLI < Thor
+    attr_reader :emoji, :frequences, :output_file
 
     desc "bar", "will print out an ascii bar of your choosing"
     long_desc <<-LONGDESC
@@ -48,11 +49,11 @@ module Haskii
     private
 
     def it_can_be_charted
-      ( not @frequences.empty? ) && (convert_to_integer.min > 0)
+      ( not frequences.empty? ) && (convert_to_integer.min > 0)
     end
 
     def create_output
-      @output_file ? render_html_chart : render_terminal_chart
+      output_file ? render_html_chart : render_terminal_chart
     end
 
     def ask_for_numbers
@@ -60,25 +61,25 @@ module Haskii
     end
 
     def render_html_chart
-      result = Haskii::HtmlChart.new(@frequences, @emoji).render
+      result = Haskii::HtmlChart.new(frequences, emoji).render
       create_html(result)
     end
 
     def render_terminal_chart
-      result = Haskii::TerminalChart.new(@frequences, @emoji).render
+      result = Haskii::TerminalChart.new(frequences, emoji).render
       puts "Your happy bar chart:\n\n"
       puts result
     end
 
     def convert_to_integer
-      @frequences.map! { |i| i.to_i }
+      frequences.map! { |frequence| frequence.to_i }
     end
 
     def create_html(result)
-      html_file = File.new(@output_file, "w+")
+      html_file = File.new(output_file, "w+")
       html_file.puts result
       html_file.close
-      puts "Your happy bar chart is in \"#{@output_file}\"\nTerminal still rules :P #igor"
+      puts "Your happy bar chart is in \"#{output_file}\"\nTerminal still rules :P #igor"
     end
 
   end
