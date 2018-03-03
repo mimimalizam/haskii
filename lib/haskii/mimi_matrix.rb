@@ -13,8 +13,8 @@ module Haskii
 
     private
 
-    def generate_row(number)
-      @numbers.map { |x| x >= number ? @emoji : " " }
+    def generate_row(row_index)
+      @numbers.map { |number| number >= row_index ? @emoji : " " }
     end
 
     def rows

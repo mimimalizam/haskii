@@ -72,7 +72,7 @@ module Haskii
     end
 
     def convert_to_integer
-      frequences.map! { |i| i.to_i }
+      frequences.map! { |frequence| frequence.to_i }
     end
 
     def create_html(result)
