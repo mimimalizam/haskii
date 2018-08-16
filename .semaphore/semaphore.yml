@@ -12,8 +12,9 @@ blocks:
         - name: APP_ENV
           value: prod
       jobs:
-      - name: Test
+      - name: Env
         commands:
+          - env
           - checkout
           - ls -1
-          - echo $APP_ENV
+          - echo
