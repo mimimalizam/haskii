@@ -18,3 +18,4 @@ blocks:
           - checkout
           - ls -1
           - echo
+          - echo
