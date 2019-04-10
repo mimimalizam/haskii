@@ -6,6 +6,15 @@ agent:
     os_image: ubuntu1804
 
 blocks:
+  - name: "arbitary-semaphoreci-block"
+    task:
+      jobs:
+      - name: Env
+        commands:
+          - env
+          - checkout
+          - ls -1
+          - echo
   - name: "bors-ng-merge"
     task:
       jobs:
