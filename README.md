@@ -1,4 +1,3 @@
-# Haskii
 
 [![Gem Version](https://badge.fury.io/rb/haskii.svg)](https://badge.fury.io/rb/haskii)
 [![Build Status](https://semaphoreci.com/api/v1/mstojadinov/haskii/branches/master/badge.svg)](https://semaphoreci.com/mstojadinov/haskii)

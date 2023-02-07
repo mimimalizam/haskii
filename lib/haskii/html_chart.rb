@@ -8,8 +8,6 @@ module Haskii
       add_tag('table', cells)
     end
 
-    private
-
     def transform_to_cells(row)
       row.map { |node| add_tag('td', node) }
       .join
